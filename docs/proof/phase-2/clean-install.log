@@ -1,0 +1,128 @@
+
+added 29 packages in 4s
+
+
+> dao-den-long@0.2.0 build
+> npm run typecheck && npm run build:core && vite build
+
+
+> dao-den-long@0.2.0 typecheck
+> tsc -p tsconfig.json --noEmit
+
+
+> dao-den-long@0.2.0 build:core
+> tsc -p tsconfig.node.json
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/web/index.html                   5.79 kB │ gzip:   2.27 kB
+dist/web/assets/index-dQAoxsNf.css    9.70 kB │ gzip:   2.94 kB
+dist/web/assets/index-Dv3R16Nt.js   578.35 kB │ gzip: 148.60 kB
+
+✓ built in 290ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+
+> dao-den-long@0.2.0 test
+> npm run build:core && node --test tests/*.test.mjs
+
+
+> dao-den-long@0.2.0 build:core
+> tsc -p tsconfig.node.json
+
+✔ v1.1 pickup includes radius boundary, respects height and capacity (253.6697ms)
+✔ outside pickup radius is not collected (132.7159ms)
+✔ deposit partial amount and finish lantern without excess spend (160.6032ms)
+✔ nearest eligible lantern chosen; ties use ID; holding interact does not repeat (182.156ms)
+✔ releasing then pressing interact triggers another deposit (158.473ms)
+✔ pulse costs carried, pushes, stuns all in radius, excludes outside (154.9362ms)
+✔ pulse fails without resources, held button does not retrigger, cooldown enforced (272.7506ms)
+✔ shades chase immediately; overlapping shade hits and invulnerability protects (249.5024ms)
+✔ lit lantern shields player and expels already-inside shade (127.905ms)
+✔ stunned shade cannot hit, then recovers after duration (119.8878ms)
+✔ win final lantern ends early and awards bonus exactly once (110.8817ms)
+✔ zero flames loses; dawn ends at exact tick; loss has no win bonus (216.9263ms)
+✔ win takes precedence over dawn in same tick (104.8175ms)
+✔ holding jump produces one jump and landing; new press allows second jump (104.1559ms)
+✔ random false suppresses all future spawns, scenario IDs remain stable (131.3454ms)
+✔ tick zero: scenario overlay, no score or events, exactly five lanterns (125.6106ms)
+✔ 120 fixed steps move 12m and consume exactly two seconds (136.3166ms)
+✔ camera yaw 90 rotates forward into positive X (163.4466ms)
+✔ diagonal speed is normalized, analog values below one are preserved (325.6543ms)
+✔ omitted fields persist; input at tick 10 applies on step 11 (177.8389ms)
+✔ absent input means idle, explicit empty arrays replace initial entities (139.1353ms)
+✔ same seed has byte-identical random output including IDs (286.853ms)
+✔ positions are serialized to at most three decimal places (128.0563ms)
+✔ snapshot interval need not divide total ticks; end is last (123.8209ms)
+✔ invalid inputs 0: exit2, diagnostic stderr (116.0583ms)
+✔ invalid inputs 1: exit2, diagnostic stderr (107.0441ms)
+✔ invalid inputs 2: exit2, diagnostic stderr (105.1938ms)
+✔ invalid inputs 3: exit2, diagnostic stderr (110.3285ms)
+✔ invalid inputs 4: exit2, diagnostic stderr (101.2543ms)
+✔ invalid inputs 5: exit2, diagnostic stderr (96.5293ms)
+✔ invalid inputs 6: exit2, diagnostic stderr (100.0557ms)
+✔ invalid inputs 7: exit2, diagnostic stderr (107.394ms)
+✔ invalid inputs 8: exit2, diagnostic stderr (101.8502ms)
+✔ invalid inputs 9: exit2, diagnostic stderr (88.0358ms)
+✔ invalid inputs 10: exit2, diagnostic stderr (79.3027ms)
+✔ invalid inputs 11: exit2, diagnostic stderr (79.362ms)
+✔ invalid scenario 0: exit2 (80.6867ms)
+✔ invalid scenario 1: exit2 (77.7781ms)
+✔ invalid scenario 2: exit2 (87.2983ms)
+✔ invalid scenario 3: exit2 (77.9315ms)
+✔ invalid scenario 4: exit2 (65.9167ms)
+✔ invalid scenario 5: exit2 (68.1278ms)
+✔ invalid scenario 6: exit2 (68.421ms)
+✔ invalid scenario 7: exit2 (67.1521ms)
+✔ invalid scenario 8: exit2 (65.2404ms)
+✔ invalid scenario 9: exit2 (65.7852ms)
+✔ invalid CLI options and unsupported night are nonzero (259.4504ms)
+✔ pulse uses full3D distance from feet+0.8, not XZ only (130.4572ms)
+✔ safe edge blocks exactly at6m and newly-lit inside shade ejects by30ticks (286.9983ms)
+✔ pulse still pushes during safe ejection within its first15ticks (157.1451ms)
+✔ supplied and automatic IDs cannot collide; same inputs remain deterministic (153.459ms)
+✔ ramp can be climbed, terrace wall cannot be walked through (303.3064ms)
+✔ night2 launch lands on destination and night3 pad lands on layer2 (262.9017ms)
+✔ TTL and charm respawn freeze while paused, then expire on simulated ticks (130.2833ms)
+✔ shade contact order follows numeric generated IDs S2 before S10 (123.1956ms)
+✔ pulse-returned drifter remains120ticks after activation, not119 (128.6811ms)
+✔ v1.1 maps and required snapshots have 5/6/7 lamps and all arrays (399.5351ms)
+✔ 20 unique motes at startup; first shades at tick300, not before (328.8626ms)
+✔ dash travels 2.8m in12 ticks, then normal movement; cooldown from start (164.2547ms)
+✔ air dash holds altitude and does not grant invulnerability (151.4597ms)
+✔ pause freezes sim time/cooldown and held pause is not toggled repeatedly (124.7825ms)
+✔ fall ignores invulnerability, loses all carried, penalizes once and respawns after60 (121.5402ms)
+✔ no_flames has precedence over all_lit in same tick (117.6496ms)
+✔ shade hit drops floor(carried/2), TTL480, not collectible during birth tick (120.0802ms)
+✔ charm makes run7.2 and dash immediately reusable after12ticks; respawns2700 (243.0799ms)
+✔ drifter steals despite invulnerability, then pulse drops stolen motes (118.8057ms)
+✔ drifter spawns tick1200 and wind active tick1800 with warning before (269.1443ms)
+✔ jump pad launch preserves horizontal velocity across input changes (107.1115ms)
+✔ whole night3 CPU-only 21600 steps completes in less than30 seconds (165.8579ms)
+✔ duplicate explicit mote IDs return format error2 (126.1276ms)
+✔ explicit charm C2 does not collide with unnamed charm (129.3999ms)
+✔ arbitrarily large explicit ID cannot overflow the automatic counter (136.7781ms)
+✔ array enums are invalid for motes, shades and drifters (460.9318ms)
+✔ scenario default TTL and stun derive only from actual tuning (2.193ms)
+✔ saved scenario: dash (125.7127ms)
+✔ saved scenario: pause (142.5626ms)
+✔ saved scenario: charm (143.8227ms)
+✔ saved scenario: drifter (181.1946ms)
+✔ saved scenario: fall (161.6132ms)
+✔ saved scenario: wind (206.3373ms)
+✔ saved scenario: launch-pad (141.3499ms)
+ℹ tests 81
+ℹ suites 0
+ℹ pass 81
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3936.3406

@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "contract_version": "1.3",
+  "phase": 4,
+  "date_utc": "2026-11-20T18:21:38.672Z",
+  "node": "v26.13.1",
+  "platform": "win32",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-1270P",
+  "source_sha256": "920fef47cbd423cf5979c407b4cb3245cf4306c9a03b6133d7d2fc90f2a224a1",
+  "test_summary": [
+    "ℹ tests 94",
+    "ℹ pass 94",
+    "ℹ fail 0"
+  ],
+  "headless": {
+    "ticks": 18000,
+    "elapsed_ms": 89.16480000000047,
+    "limit_ms": 30000,
+    "deterministic": true,
+    "output_sha256": "949659611eea8c1c1aa019ad1713b392666e9b74b436a1e559c15e754ecdbbfa"
+  },
+  "configuration_sha256": "e842d1218efcce6c233cc1923aa97e2684722114b356346d810595725903ac2f",
+  "feature_scenarios": [
+    {
+      "name": "dash",
+      "night": 1,
+      "ticks": 12,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/dash.jsonl"
+    },
+    {
+      "name": "pause",
+      "night": 1,
+      "ticks": 30,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/pause.jsonl"
+    },
+    {
+      "name": "charm",
+      "night": 2,
+      "ticks": 2,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/charm.jsonl"
+    },
+    {
+      "name": "drifter",
+      "night": 2,
+      "ticks": 2,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/drifter.jsonl"
+    },
+    {
+      "name": "fall",
+      "night": 1,
+      "ticks": 61,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/fall.jsonl"
+    },
+    {
+      "name": "wind",
+      "night": 3,
+      "ticks": 1800,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/wind.jsonl"
+    },
+    {
+      "name": "launch-pad",
+      "night": 2,
+      "ticks": 100,
+      "passed": true,
+      "output": "docs/proof/phase-4/scenarios/launch-pad.jsonl"
+    }
+  ],
+  "soak_test": {
+    "nights": 10,
+    "crashes": 0,
+    "results": [
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost",
+      "lost"
+    ],
+    "mem_start_mb": 53,
+    "mem_end_mb": 58,
+    "duration_s": 0.3
+  },
+  "benchmark": {
+    "contract_version": "1.3",
+    "avg_fps": 242,
+    "p1_low_fps": 121.6,
+    "frame_ms_p95": 5.6,
+    "frames": 7261,
+    "load_ms": 2149,
+    "peak_mem_mb": null,
+    "vsync_off": true,
+    "renderer": "WebKit WebGL",
+    "os": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0"
+  },
+  "leaderboard_exported": true,
+  "browser": "Separate browser-report.json; compare source_sha256",
+  "linux": "CI configured separately; local verification runs on reported platform."
+}

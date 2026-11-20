@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "platform": "nt",
+  "isolated_temp_directory": true,
+  "checks": [
+    {
+      "command": [
+        "ci",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 3.8654538000000684
+    },
+    {
+      "command": [
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 4.592612899999949
+    },
+    {
+      "command": [
+        "test"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 5.722315799999706
+    }
+  ]
+}

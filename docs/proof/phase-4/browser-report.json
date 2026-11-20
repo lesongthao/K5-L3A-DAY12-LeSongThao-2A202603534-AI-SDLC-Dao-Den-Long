@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "date_utc": "2026-11-20T18:21:27.636Z",
+  "platform": "win32",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-1270P",
+  "source_sha256": "920fef47cbd423cf5979c407b4cb3245cf4306c9a03b6133d7d2fc90f2a224a1",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "157.0.4341.60",
+  "performance": {
+    "frames": 481,
+    "elapsed_ms": 8002.4,
+    "average_fps": 60.106967909627116,
+    "p95_frame_ms": 16.899999999999636,
+    "renderer": "WebKit WebGL",
+    "calls": 1,
+    "triangles": 1,
+    "fps": 60.066072679947936
+  },
+  "scenarios": [
+    "Leaderboard opens and displays top scores from menu (UI font >= 18px)",
+    "WASD moves in correct screen-relative directions",
+    "P freezes gameplay while raw tick advances",
+    "Volume and sensitivity persist after reload",
+    "Staff kills in 3 hits, Q kills in 1 hit (cost 3 motes), HUD has zero overlap at 1280x640",
+    "Normal Night 3 at 1280x720 averages >=30 FPS",
+    "Three victories advance nights and Dawn totals won-night scores",
+    "Loss retries the same night"
+  ],
+  "audio": {
+    "state": "running"
+  },
+  "page_errors": [],
+  "screenshots": "Scenario-arranged screenshots use ?qa=1; menu and initial worlds are actual rendered game."
+}

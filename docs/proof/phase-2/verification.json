@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "date_utc": "2026-11-20T08:52:49.910Z",
+  "node": "v26.13.1",
+  "platform": "win32",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-1270P",
+  "source_sha256": "6fee879330794166ffd0076e8a7ab2409c2d564c4114bf65a14e14364fd7fc85",
+  "test_summary": [
+    "ℹ tests 81",
+    "ℹ pass 81",
+    "ℹ fail 0"
+  ],
+  "headless": {
+    "ticks": 21600,
+    "elapsed_ms": 99.76980000000003,
+    "limit_ms": 30000,
+    "deterministic": true,
+    "output_sha256": "7190379cb74060e1ed438c0741abc92dee3a99665809da2cd73a5d82c0041ad0"
+  },
+  "configuration_sha256": "c5f5ab448033086c1226d8b20ed9b6615bc0dca71b4bb6ca36a071bcbe633310",
+  "feature_scenarios": [
+    {
+      "name": "dash",
+      "night": 1,
+      "ticks": 12,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/dash.jsonl"
+    },
+    {
+      "name": "pause",
+      "night": 1,
+      "ticks": 30,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/pause.jsonl"
+    },
+    {
+      "name": "charm",
+      "night": 2,
+      "ticks": 2,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/charm.jsonl"
+    },
+    {
+      "name": "drifter",
+      "night": 2,
+      "ticks": 2,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/drifter.jsonl"
+    },
+    {
+      "name": "fall",
+      "night": 1,
+      "ticks": 61,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/fall.jsonl"
+    },
+    {
+      "name": "wind",
+      "night": 3,
+      "ticks": 1800,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/wind.jsonl"
+    },
+    {
+      "name": "launch-pad",
+      "night": 2,
+      "ticks": 100,
+      "passed": true,
+      "output": "docs/proof/phase-2/scenarios/launch-pad.jsonl"
+    }
+  ],
+  "browser": "Separate browser-report.json; compare source_sha256",
+  "linux": "CI configured separately; local verification runs on reported platform."
+}

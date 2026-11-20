@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "name": "May_Vang",
+      "score": 1850,
+      "nights_won": 3,
+      "achieved_at": "2026-11-20T14:30:00.000Z",
+      "seed": 202603534
+    },
+    {
+      "name": "Ong_Dang",
+      "score": 1420,
+      "nights_won": 2,
+      "achieved_at": "2026-11-20T13:15:00.000Z",
+      "seed": 42
+    }
+  ]
+}

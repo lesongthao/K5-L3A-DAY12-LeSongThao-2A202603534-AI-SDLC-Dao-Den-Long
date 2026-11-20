@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "date_utc": "2026-11-20T08:45:04.796Z",
+  "platform": "win32",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-1270P",
+  "source_sha256": "6fee879330794166ffd0076e8a7ab2409c2d564c4114bf65a14e14364fd7fc85",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "157.0.4341.60",
+  "performance": {
+    "frames": 482,
+    "elapsed_ms": 8004,
+    "average_fps": 60.21989005497252,
+    "p95_frame_ms": 16.899999999999636,
+    "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A6) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "calls": 87,
+    "triangles": 5766,
+    "fps": 60.19110676397562
+  },
+  "scenarios": [
+    "WASD moves the shared simulation",
+    "P freezes gameplay while raw tick advances",
+    "Volume and sensitivity persist after reload",
+    "Normal Night 3 at 1280x720 averages >=30 FPS",
+    "Three victories advance nights and Dawn totals won-night scores",
+    "Loss retries the same night"
+  ],
+  "audio": {
+    "state": "running",
+    "played": [
+      "night_start",
+      "shade_spawned",
+      "deposit",
+      "lantern_lit",
+      "won",
+      "lost"
+    ]
+  },
+  "page_errors": [],
+  "screenshots": "Scenario-arranged screenshots use ?qa=1; menu and initial worlds are actual rendered game."
+}
