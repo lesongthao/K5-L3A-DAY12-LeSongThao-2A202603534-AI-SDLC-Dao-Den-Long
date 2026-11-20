@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0E1430"><meta name="description" content="Đảo Đèn Lồng — hành trình thắp sáng ba hòn đảo giữa biển mây.">
+  <title>Đảo Đèn Lồng · Bình minh v1.0.0</title>
+</head>
+<body>
+  <canvas id="world" aria-label="Thế giới 3D Đảo Đèn Lồng"></canvas>
+  <div class="vignette"></div><div id="pulse-flash"></div><div id="hit-flash"></div>
+  <header id="brand"><span class="brand-icon">✧</span><div>ĐẢO ĐÈN LỒNG<small>BÌNH MINH v1.0.0</small></div></header>
+
+  <nav id="top-nav" class="top-nav" aria-label="Điều hướng chính">
+    <button id="nav-menu" class="nav-tab active" data-tab="menu">✦ Hành Trình</button>
+    <button id="open-help" class="nav-tab" data-tab="help">📖 Hướng Dẫn</button>
+    <button id="open-leaderboard" class="nav-tab" data-tab="leaderboard">🏆 Xếp Hạng</button>
+    <button id="open-settings" class="nav-tab" data-tab="settings">⚙ Cài Đặt</button>
+  </nav>
+
+  <div id="scene-caption"><span>ĐÊM <b id="caption-night">01</b></span><span id="caption-name">Đảo Bến</span></div>
+
+  <main id="overlay" aria-live="polite">
+    <section id="menu" class="panel hero">
+      <div class="eyebrow"><span class="line"></span> BA HÒN ĐẢO · MỘT BÌNH MINH</div>
+      <h1>Mang ánh sáng<br>về <em>phía nhà.</em></h1>
+      <p>Cùng Mây cầm gậy phép thu thập đom đóm, hạ Bóng Mực và thắp sáng các Đèn Lồng tới bình minh.</p>
+      <div class="island-cards">
+        <div class="island-card"><b>01 · Đảo Bến</b><small>5 đèn · 4 phút</small></div>
+        <div class="island-card"><b>02 · Đảo Cau</b><small>6 đèn · Cầu tre</small></div>
+        <div class="island-card"><b>03 · Đảo Chuông</b><small>7 đèn · Gió lốc</small></div>
+      </div>
+      <div class="hero-cta">
+        <button id="start" class="primary">Bắt đầu hành trình <span>✧</span></button>
+        <button id="menu-cheat-open" class="secondary cta-sub" title="Mở Bí Kíp Ông Đăng (F9)">✦ Bí Kíp</button>
+      </div>
+    </section>
+
+    <section id="intro" class="panel centered" hidden>
+      <div class="eyebrow">LỜI ÔNG ĐĂNG</div><h2 id="intro-title"></h2><p id="intro-text"></p>
+      <button id="enter-night" class="primary">Thắp ánh sáng đầu tiên</button>
+      <small>WASD chạy · Trái đánh 3 gậy hạ quái · Phải/E nạp đèn · Shift lướt · Q tiêu diệt diện rộng</small>
+    </section>
+
+    <section id="pause" class="panel centered compact" hidden>
+      <div class="eyebrow">NGHỈ CHÂN BÊN ÁNH ĐÈN</div><h2>Tạm dừng</h2>
+      <button id="resume" class="primary">Tiếp tục</button>
+      <button id="restart" class="secondary">Chơi lại Đêm</button>
+      <button id="pause-settings" class="secondary">Cài đặt</button>
+      <button id="pause-cheats" class="secondary">✦ Bí Kíp Ông Đăng (F9)</button>
+      <button id="to-menu" class="text-button">Về menu</button>
+    </section>
+
+    <section id="result" class="panel centered" hidden>
+      <div id="result-eyebrow" class="eyebrow"></div><h2 id="result-title"></h2><p id="result-text"></p>
+      <div class="result-score"><small>ÁNH SÁNG BẠN MANG VỀ</small><strong id="result-score">0</strong></div>
+      <div id="result-save-container" class="save-box" hidden>
+        <label for="player-name">Lưu tên vào Bảng xếp hạng (3–12 ký tự):</label>
+        <div class="save-row">
+          <input id="player-name" type="text" maxlength="12" placeholder="May_Nho">
+          <button id="save-score" class="secondary">Lưu điểm</button>
+        </div>
+      </div>
+      <button id="result-action" class="primary"></button><button id="result-menu" class="text-button">Về menu</button>
+    </section>
+
+    <section id="leaderboard" class="panel centered wide" hidden>
+      <div class="eyebrow">VINH DANH THẮP ĐÈN</div><h2>Bảng xếp hạng</h2>
+      <div class="table-wrap">
+        <table class="lb-table">
+          <thead><tr><th>Hạng</th><th>Người chơi</th><th>Điểm</th><th>Đêm thắng</th><th>Ngày</th></tr></thead>
+          <tbody id="lb-body"></tbody>
+        </table>
+      </div>
+      <button id="close-leaderboard" class="primary">Quay lại Hành Trình</button>
+    </section>
+
+    <section id="settings" class="panel centered wide scrollable" hidden>
+      <div class="eyebrow">THEO CÁCH CỦA BẠN</div><h2>Cài đặt</h2>
+      <div class="settings-grid">
+        <div class="settings-col">
+          <h3>Âm thanh &amp; Điều khiển</h3>
+          <label for="volume">Âm lượng <output id="volume-value">50%</output></label><input id="volume" type="range" min="0" max="100" value="50">
+          <label for="sensitivity">Độ nhạy chuột <output id="sensitivity-value">1.0</output></label><input id="sensitivity" type="range" min="20" max="200" value="100">
+          <h3>Trợ năng</h3>
+          <label for="colorblind">Bảng màu dễ phân biệt <input id="colorblind" type="checkbox"></label>
+          <label for="reduced-motion">Giảm chuyển động (tắt rung/chớp) <input id="reduced-motion" type="checkbox"></label>
+          <label for="large-font">Cỡ chữ lớn (×1.25) <input id="large-font" type="checkbox"></label>
+        </div>
+        <div class="settings-col">
+          <h3>Đổi phím điều khiển</h3>
+          <div id="keybinds-list" class="keybinds-list"></div>
+          <button id="reset-keybinds" class="secondary small-btn">Khôi phục mặc định</button>
+        </div>
+      </div>
+      <p class="small">Cài đặt được lưu tự động trên trình duyệt này.</p>
+      <button id="close-settings" class="primary">Xong</button>
+    </section>
+
+    <section id="help" class="panel centered wide scrollable" hidden>
+      <div class="eyebrow">CẨM NANG GIỮ ĐÈN</div><h2>Hướng Dẫn Chơi</h2>
+      <div class="flow-steps">
+        <span><b>1. Gom sáng</b><small>Nhặt đom đóm trên đảo</small></span>
+        <span><b>2. Thắp đèn</b><small>E / Chuột phải ở đèn</small></span>
+        <span><b>3. Hạ quái</b><small>3 gậy hoặc Q (hồi 20s)</small></span>
+        <span><b>4. Bình minh</b><small>Giữ ≥ 60% đèn tới sáng</small></span>
+      </div>
+      <div class="help-grid"><span><kbd>W A S D</kbd> Di chuyển</span><span><kbd>Space</kbd> Nhảy</span><span><kbd>Click Trái / F</kbd> Vung gậy (3 hit hạ)</span><span><kbd>Chuột Phải / E</kbd> Nạp / châm dầu</span><span><kbd>Shift</kbd> Lướt nhanh</span><span><kbd>Q</kbd> Tỏa sáng (hạ ngay)</span></div>
+      <p>Kéo chuột trái xoay camera. Bấm <kbd>F9</kbd> mở Bí Kíp Ông Đăng, <kbd>I</kbd> thu gọn chỉ dẫn, <kbd>H</kbd> ẩn HUD.</p>
+      <button id="close-help" class="primary">Quay lại Hành Trình</button>
+    </section>
+  </main>
+
+  <aside id="cheat-panel" class="cheat-panel" hidden>
+    <div class="cheat-head"><b>✦ Bí Kíp Ông Đăng</b><button id="cheat-close" aria-label="Đóng">✕</button></div>
+    <div class="cheat-grid">
+      <label><span>Bất tử lửa</span><input id="cheat-god" type="checkbox"></label>
+      <label><span>Đom đóm ∞</span><input id="cheat-motes" type="checkbox"></label>
+      <label><span>Đóng băng quái</span><input id="cheat-freeze" type="checkbox"></label>
+      <label><span>Siêu tốc</span><input id="cheat-speed" type="checkbox"></label>
+      <label><span>Ẩn HUD (H)</span><input id="cheat-hide-hud" type="checkbox"></label>
+      <label><span>Cam tự do</span><input id="cheat-director" type="checkbox"></label>
+    </div>
+    <div class="cheat-btns">
+      <button id="cheat-light-all" class="secondary small-btn">Thắp Toàn Đảo</button>
+      <button id="cheat-dawn" class="secondary small-btn">Gọi Bình Minh</button>
+    </div>
+    <div class="cheat-nights">
+      <button id="cheat-n1" class="secondary small-btn">Đêm 1</button>
+      <button id="cheat-n2" class="secondary small-btn">Đêm 2</button>
+      <button id="cheat-n3" class="secondary small-btn">Đêm 3</button>
+    </div>
+    <button id="cheat-reset-all" class="secondary small-btn">Tắt toàn bộ Bí Kíp</button>
+  </aside>
+
+  <div id="hud" hidden>
+    <div class="hud-left">
+      <div class="health">
+        <div class="health-head"><span class="hud-label">NGỌN LỬA</span><small id="charm-status"></small></div>
+        <div id="flames"></div>
+      </div>
+      <div id="cheat-badge" class="cheat-badge" hidden>✦ BÍ KÍP (F9)</div>
+      <div id="mission-guide" class="mission-guide">
+        <div class="guide-head"><b id="guide-step">Gom Đom Đóm</b><button id="toggle-guide" title="Thu gọn/mở hướng dẫn (I)">?</button></div>
+        <p id="guide-detail">Gom đốm sáng rồi thắp đèn.</p>
+      </div>
+    </div>
+
+    <div class="hud-top-center">
+      <div id="timer" class="timer">04:00</div>
+      <div id="wind-warning" hidden>❧ Gió đang đến…</div>
+    </div>
+
+    <div class="hud-right">
+      <div class="progress"><span class="hud-label">ĐÈN ĐANG SÁNG</span><strong id="lamp-count">0 / 5</strong><span class="score">✧ <b id="score">0</b></span></div>
+    </div>
+
+    <div id="big-countdown" class="big-countdown" hidden>10</div>
+    <div id="direction" hidden><span>▲</span><small>Đèn cần nạp</small></div>
+    <div id="shade-warning" class="shade-warning" hidden><span>▲</span><small>Bóng Mực</small></div>
+    <div id="interact" hidden><kbd>E / Chuột phải</kbd><span>Nạp sáng <b id="deposit-progress"></b></span></div>
+
+    <div class="pouch"><div class="hud-label"><span>ĐOM ĐÓM</span><b id="carried">0 / 10</b></div><div id="slots"></div></div>
+    <div class="abilities"><div id="dash-ability"><kbd>Shift</kbd><span>Lướt<small id="dash-cd">Sẵn sàng</small></span></div><div id="pulse-ability"><kbd>Q</kbd><span>Tỏa sáng<small id="pulse-cd">3 đom đóm</small></span></div></div>
+    <div class="hud-help">Trái đánh · Phải nạp · F9 Bí Kíp <button id="hud-pause" aria-label="Tạm dừng">Ⅱ</button></div>
+  </div>
+
+  <div id="toast" role="status"></div><div id="loading">Đang gom những đốm sáng…</div>
+  <footer id="menu-footer"><span>ĐẢO ĐÈN LỒNG</span><span>Được thắp sáng bởi những điều nhỏ bé.</span><span>AI SDLC · DAY 12</span></footer>
+  <script type="module" src="/src/browser/main.ts"></script>
+</body>
+</html>
