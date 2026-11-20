@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.runs/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+*.log
+!docs/proof/**/*.log
+artifacts/
+/output.jsonl

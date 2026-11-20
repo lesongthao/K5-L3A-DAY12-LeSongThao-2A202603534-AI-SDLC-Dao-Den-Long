@@ -1,0 +1,6 @@
+{
+  "schema_version":1,"id":"P1-CORE","task":"tasks/P1-CORE.md",
+  "write_paths":["src/core/","src/headless/","package.json","package-lock.json","tsconfig.json","tsconfig.node.json","dist/"],
+  "checks":[["npm","install","--no-audit","--no-fund"],["npm","run","build:core"],["node","--test","tests/contract.test.mjs"]],
+  "check_cwd":".","max_rounds":2,"timeout":600
+}

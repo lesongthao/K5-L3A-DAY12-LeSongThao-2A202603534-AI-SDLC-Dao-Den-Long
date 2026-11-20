@@ -1,0 +1,6 @@
+{
+  "schema_version":1,"id":"P1-RULES","task":"tasks/P1-RULES.md",
+  "write_paths":["src/core/","dist/"],
+  "checks":[["npm","run","build:core"],["node","--test","tests/contract.test.mjs","tests/behavior.test.mjs"]],
+  "check_cwd":".","max_rounds":2,"timeout":600
+}

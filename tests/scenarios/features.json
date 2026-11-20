@@ -1,0 +1,9 @@
+[
+  {"name":"dash","night":1,"ticks":12,"scenario":{"random_motes":false,"random_shades":false,"motes":[],"shades":[]},"frames":[{"tick":0,"dash":true}],"event":"dash"},
+  {"name":"pause","night":1,"ticks":30,"scenario":{"random_motes":false,"random_shades":false,"motes":[],"shades":[]},"frames":[{"tick":0,"pause":true},{"tick":10,"pause":false},{"tick":20,"pause":true}],"event":"resumed"},
+  {"name":"charm","night":2,"ticks":2,"scenario":{"random_motes":false,"random_shades":false,"random_drifters":false,"charms":[{"id":"C1","pos":[0,0,0]}]},"frames":[],"event":"charm_picked"},
+  {"name":"drifter","night":2,"ticks":2,"scenario":{"random_motes":false,"random_shades":false,"random_drifters":false,"player":{"carried":10},"drifters":[{"id":"D1","pos":[0,0.8,0],"state":"chase"}]},"frames":[{"tick":1,"pulse":true}],"event":"drifter_drop"},
+  {"name":"fall","night":1,"ticks":61,"scenario":{"random_motes":false,"random_shades":false,"player":{"pos":[42,-11,0],"carried":7}},"frames":[],"event":"player_hit"},
+  {"name":"wind","night":3,"ticks":1800,"scenario":{"random_motes":false,"random_shades":false,"random_drifters":false,"wind_enabled":true},"frames":[],"wind":true},
+  {"name":"launch-pad","night":2,"ticks":100,"scenario":{"random_motes":false,"random_shades":false,"random_drifters":false,"player":{"pos":[20,0,18]}},"frames":[],"landed":true}
+]
